@@ -20,3 +20,4 @@ export const MediaQuery = (query) => {
 
     return matches
 }
+
