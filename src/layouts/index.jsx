@@ -4,7 +4,7 @@ import React from 'react'
 
 const Layouts = ({children}) => {
   return (
-    <div className='bg-[#FFF8F1]'>
+    <div>
         <Navbar/>
         <main>{children}</main>
         <Footer/>
