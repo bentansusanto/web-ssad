@@ -1,8 +1,9 @@
-import { MediaQuery } from "../../../config";
+import { MediaQuery } from "../../config";
 import AboutSection from "./components/AboutSection";
 
 import HeroSection from "./components/HeroSection";
 import PersentaseSection from "./components/PersentaseSection";
+import QuotesSection from "./components/QuotesSection";
 import TipsSection from "./components/TipsSection";
 
 const Homepage = () => {
@@ -11,12 +12,12 @@ const Homepage = () => {
   return (
     <div className="overflow-x-hidden">
       <HeroSection isMobile={isMobile} />
-      <AboutSection isMobile={isMobile}/>
-      <PersentaseSection isMobile={isMobile}/>
-      <TipsSection isMobile={isMobile}/>
+      <AboutSection isMobile={isMobile} />
+      <PersentaseSection isMobile={isMobile} />
+      <TipsSection isMobile={isMobile} />
+      <QuotesSection isMobile={isMobile}/>
     </div>
   );
 };
 
 export default Homepage;
-

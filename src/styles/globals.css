@@ -7,7 +7,7 @@
 }
 
 body {
-  @apply overflow-x-hidden font-noto-sans bg-[#FFF8F1]
+  @apply overflow-x-hidden font-noto-sans bg-white
 }
 
 p, li, button{
