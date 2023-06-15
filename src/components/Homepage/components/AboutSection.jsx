@@ -6,7 +6,7 @@ import PatternLeaf1 from '../../../../public/assets/leaf1.svg'
 
 const AboutSection = ({isMobile}) => {
   return (
-    <div> 
+    <div className='relative'> 
        {/*Patern leaf */}
       <div>
         <Image src={PatternLeaf} alt='pattern-leaf' className={`${isMobile&& "w-32 my-10"}`}/>

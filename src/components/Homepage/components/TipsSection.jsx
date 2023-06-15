@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import Checklist from '../../../../public/assets/Checklist.svg'
-import { listTips } from "../../../data/listTips";
+import { listTips } from "../../../data/listDataHome";
 import BgTips from "../../../../public/assets/bg-tips.svg";
 
 const TipsSection = ({ isMobile }) => {
