@@ -1,4 +1,5 @@
 import { MediaQuery } from "../../config";
+import Link from "next/link";
 
 const Navbar = () => {
   const isMobile = MediaQuery("(max-width: 600px)");
@@ -12,7 +13,7 @@ const Navbar = () => {
         <h1 className="text-[18px] font-bold text-[#85CDAC]">SSAD</h1>
         <div>
           <button className="bg-[#7ACEBC] px-5 py-2.5 rounded-md text-white">
-            Take test
+            <Link href={'/kuisioner'}>Take test</Link>
           </button>
         </div>
       </div>

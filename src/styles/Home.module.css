@@ -1,0 +1,15 @@
+.bgQuotes{
+    background: url(../../public/assets/bg-quotes.svg);
+    background-size: cover;
+  }
+
+.bgQuestion{
+  background: url(../../public/assets/bg-test.svg);
+  background-size: cover;
+  
+}
+.bgKuisioner{
+  background: url(../../public/assets/bg-test.svg);
+  background-size: cover;
+  
+}

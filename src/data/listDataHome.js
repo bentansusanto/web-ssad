@@ -21,9 +21,9 @@ export const listTips = [
 
 export const listQuotes = [
     { quotes: "Healing begins when we acknowledge and address th root causes of our sleeping disorders, stress, anxiety, and depression."},
-    { quotes: "Hello"},
-    { quotes: "guys"},
-    { quotes: "How are you"},
+    { quotes: "good"},
+    { quotes: "Healing begins when we acknowledge and address th root causes of our sleeping disorders, stress, anxiety, and depression."},
+    { quotes: "Healing begins when we acknowledge and address th root causes of our sleeping disorders, stress, anxiety, and depression."},
 ]
 
 

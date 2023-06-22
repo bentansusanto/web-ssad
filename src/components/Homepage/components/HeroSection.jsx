@@ -1,5 +1,6 @@
 import Image from "next/image";
 import BgHero from "../../../../public/assets/bg-hero.svg";
+import Link from "next/link";
 
 const HeroSection = ({ isMobile }) => {
   return (
@@ -21,7 +22,7 @@ const HeroSection = ({ isMobile }) => {
             your condition.
           </p>
           <button className="bg-[#7ACEBC] px-5 py-2.5 rounded-md mt-8 text-white">
-            Take test
+          <Link href={'/kuisioner'}>Take test</Link>
           </button>
         </div>
       </div>
