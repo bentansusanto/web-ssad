@@ -880,7 +880,7 @@ export const kuisioners = [
         },
         {
             id: 3,
-            name_test : "Anxiety Assesments",
+            name_test : "Anxiety Assesment",
             general_test : [
                 {
                     general_question: "Apakah anda sedang mengalami cemas yang berlebih",
@@ -1449,7 +1449,7 @@ export const kuisioners = [
         },
         {
             id: 4,
-            name_test : "Depression Assesments",
+            name_test : "Depression Assesment",
             general_test : [
                 {
                     general_question: "Apakah anda sering merasa tidak berguna?",

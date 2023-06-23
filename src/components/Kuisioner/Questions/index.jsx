@@ -17,10 +17,15 @@ const Questions = () => {
   const [currentCompleteTest, setCurrentCompleteTest] = useState(0) 
 
   const detailKuisioner = kuisioners.find((kuis) => kuis.id == kuisioner);
+
+  if(!detailKuisioner){
+    return null
+  }
+
   const currentQuestion = detailKuisioner.general_test[currentQuestionTest]
   const lastQuestion = currentQuestionTest === detailKuisioner.general_test.length - 1
   const currentQuestionComplete = detailKuisioner.complete_test[currentCompleteTest]
-  const lastQuestionComplete = currentCompleteTest === detailKuisioner.complete_test.length -1
+  const lastQuestionComplete = currentCompleteTest === detailKuisioner.complete_test.length - 1
 
   // Handle General answer
   const handleGeneralTestAnswer = (answer) => {
@@ -68,27 +73,48 @@ const Questions = () => {
     }
   };
 
-  // Handle Answer Complete Question
-  const handleCompleteTestAnswer = (answer, questionIndex) => {
-    setAnswerComplete(prevAnswers => {
-      const updatedAnswers = [...prevAnswers];
-      updatedAnswers[currentCompleteTest] = answer;
-      return updatedAnswers;
-    });
-    setSelectQuestion(true)
-  }
+const handleCompleteTestAnswer = (answer) => {
+  setAnswerComplete((prevAnswers) => [...prevAnswers, answer]);
+  setSelectQuestion(true)
+};
 
-  // Handle NextButton Complete Question
+const calculateResults = () => {
+    let totalWeight = 0;
+    if(detailKuisioner.name_test === "Sleeping Disorders Assesment" || detailKuisioner.name_test === "Anxiety Assesment" || detailKuisioner.name_test === "Depression Assesment"){
+      let sumWeight = 0;
+      // let countQuestions = 0;
+      for (let i = 0; i < answerComplete.length; i++) {
+        const answer = answerComplete[i];
+        const options = detailKuisioner.complete_test[i].complete_option;
+        const selectedOption = options.find(option => option.answer === answer);
+        if (selectedOption) {
+          sumWeight += selectedOption.weight;
+        }
+      }
+      totalWeight = sumWeight / 3;
+    }else if(detailKuisioner.name_test === "Stress Assesment"){
+      for (let i = 0; i < answerComplete.length; i++) {
+        const answer = answerComplete[i];
+        const options = detailKuisioner.complete_test[i].complete_option;
+        const selectedOption = options.find(option => option.answer === answer);
+        if (selectedOption) {
+          totalWeight += selectedOption.weight;  
+        }
+      }
+    }
+    console.log(`Hasilnya adalah: ${totalWeight}`)
+    return totalWeight;
+}
+
+   // Handle NextButton Complete Question
   const handleNextCompleteButton = () => {
     if(lastQuestionComplete){
-      console.log("results")
+      const result = calculateResults()
+      console.log("Bobot", result)
+      router.push('/results')
+    }else{
+      setCurrentCompleteTest((previewIdx) => previewIdx + 1)
     }
-    setCurrentCompleteTest(currentCompleteTest + 1)
-  }
-
-  // handle Bobot Answer Complete Test
-  const calculateWeight = () => {
-
   }
 
   return (
@@ -143,11 +169,11 @@ const Questions = () => {
               </div>
               <div className="space-y-3">
                 {
-                  currentQuestionComplete.complete_option.map((val, idx) => (
-                    <div key={idx} onClick={() => handleCompleteTestAnswer(val)} className={`${isMobile? "w-auto" :  "w-72"} ${selectQuestion&&answerComplete[currentCompleteTest] === val ? "bg-[#9AD1B8]" : "bg-gray-100" }  py-3.5 px-5 w-72 flex items-center space-x-5 rounded-md transition-colors ease-out duration-500`}>
-                        <div className={`${selectQuestion&&answerComplete[currentCompleteTest] === val&&"border-none"} bg-white w-5 h-5 rounded-full border border-gray-400 p-[4px]`}>        
+                  currentQuestionComplete.complete_option.map((val, index) => (
+                    <div key={index} onClick={() => handleCompleteTestAnswer(val.answer)} className={`${isMobile? "w-auto" :  "w-72"} ${selectQuestion&&answerComplete[currentCompleteTest] === val.answer ? "bg-[#9AD1B8]" : "bg-gray-100" }  py-3.5 px-5 w-72 flex items-center space-x-5 rounded-md transition-colors ease-out duration-500`}>
+                        <div className={`${selectQuestion&&answerComplete[currentCompleteTest] === val.answer&&"border-none"} bg-white w-5 h-5 rounded-full border border-gray-400 p-[4px]`}>        
                          {
-                            selectQuestion&&answerComplete[currentCompleteTest] === val && (<div className="bg-[#9AD1B8] w-3 h-3 rounded-full transition-colors ease-out duration-500"/>)
+                            selectQuestion&&answerComplete[currentCompleteTest] === val.answer && (<div className="bg-[#9AD1B8] w-3 h-3 rounded-full transition-colors ease-out duration-500"/>)
                          }
                     </div>
                       <p>{val.answer}</p>
