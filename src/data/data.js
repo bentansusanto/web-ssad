@@ -163,7 +163,7 @@ export const kuisioners = [
                     complete_option: [
                         {
                             answer: "Ya",
-                            weightt: 1
+                            weight: 1
                         },
                         {
                             answer: "Tidak",
@@ -188,7 +188,7 @@ export const kuisioners = [
                         },
                         {
                             answer: "Lebih keras daripada saat berbicara",
-                            weightt: 1
+                            weight: 1
                         },
                         {
                             answer: "Sangat keras, sehingga dapat terdengar diruang sebelah",

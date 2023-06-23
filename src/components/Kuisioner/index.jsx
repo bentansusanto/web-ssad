@@ -15,7 +15,7 @@ const Kuisioner = () => {
     
     const handleSelect = (id) => {
       setSelectQuisioner(id)
-      setSelectData(!selectData)
+      setSelectData(true)
     }
 
     const redirectQuestion = () => {
