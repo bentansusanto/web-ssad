@@ -74,10 +74,15 @@ const Questions = () => {
   };
 
 const handleCompleteTestAnswer = (answer) => {
-  setAnswerComplete((prevAnswers) => [...prevAnswers, answer]);
+  setAnswerComplete(prevAnswers => {
+    const updatedAnswers = [...prevAnswers];
+    updatedAnswers[currentCompleteTest] = answer;
+    return updatedAnswers;
+  });
   setSelectQuestion(true)
 };
 
+// Handle Calculate Weight of Answer
 const calculateResults = () => {
     let totalWeight = 0;
     if(detailKuisioner.name_test === "Sleeping Disorders Assesment" || detailKuisioner.name_test === "Anxiety Assesment" || detailKuisioner.name_test === "Depression Assesment"){
@@ -103,7 +108,7 @@ const calculateResults = () => {
       }
     }
     console.log(`Hasilnya adalah: ${totalWeight}`)
-    return totalWeight;
+    return Math.round(totalWeight);
 }
 
    // Handle NextButton Complete Question
@@ -111,9 +116,10 @@ const calculateResults = () => {
     if(lastQuestionComplete){
       const result = calculateResults()
       console.log("Bobot", result)
-      router.push('/results')
+      router.push(`/results?hasil adalah=${result}`)
     }else{
-      setCurrentCompleteTest((previewIdx) => previewIdx + 1)
+      setCurrentCompleteTest((prevIdx) => prevIdx + 1)
+      setSelectQuestion(false)
     }
   }
 
@@ -146,10 +152,10 @@ const calculateResults = () => {
               <div className="space-y-3">
                 {
                   currentQuestion.answer.map((val, idx) => (
-                    <div key={idx} onClick={() => handleGeneralTestAnswer(val)} className={`${isMobile? "w-auto" :  "w-72"} ${selectQuestion&&answerGeneral[currentQuestionTest] === val ? "bg-[#9AD1B8]" : "bg-gray-100" }  py-3.5 px-5 w-72 flex items-center space-x-5 rounded-md transition-colors ease-out duration-500`}>
+                    <div key={idx} onClick={() => handleGeneralTestAnswer(val)} className={`${isMobile? "w-auto" :  "w-72"} ${selectQuestion&&answerGeneral[currentQuestionTest] === val ? "bg-[#7ACEBC]" : "bg-gray-100" }  py-3.5 px-5 w-72 flex items-center space-x-5 rounded-md transition-colors ease-out duration-500`}>
                         <div className={`${selectQuestion&&answerGeneral[currentQuestionTest] === val&&"border-none"} bg-white w-5 h-5 rounded-full border border-gray-400 p-[4px]`}>        
                          {
-                            selectQuestion&&answerGeneral[currentQuestionTest] === val && (<div className="bg-[#9AD1B8] w-3 h-3 rounded-full transition-colors ease-out duration-500"/>)
+                            selectQuestion&&answerGeneral[currentQuestionTest] === val && (<div className="bg-[#7ACEBC] w-3 h-3 rounded-full transition-colors ease-out duration-500"/>)
                          }
                     </div>
                       <p>{val}</p>
@@ -163,17 +169,17 @@ const calculateResults = () => {
               <div className="space-y-5">
                 <h2 className={`text-2xl font-semibold`}>{currentQuestionComplete.complete_question}</h2>
                 <div className="flex space-x-4 mt-5">
-                <button onClick={handlePreviousCompleteQuestion} className={` ${ currentCompleteTest === 0? " hidden " : "bg-[#9AD1B8] text-white cursor-pointer"}  py-2.5 rounded-md px-5 transition-colors ease-out duration-500 `}>Back</button>
-                <button onClick={handleNextCompleteButton} disabled={isNextCompleteDisabled} className={` ${selectQuestion&&answerComplete[currentCompleteTest]? "bg-[#9AD1B8] text-white cursor-pointer" : "bg-gray-300 cursor-default text-gray-400"} text-gray-400  py-2.5 rounded-md px-5 transition-colors ease-out duration-500 `}>Next</button>
+                <button onClick={handlePreviousCompleteQuestion} className={` ${ currentCompleteTest === 0? " hidden " : "bg-[#7ACEBC] text-white cursor-pointer"}  py-2.5 rounded-md px-5 transition-colors ease-out duration-500 `}>Back</button>
+                <button onClick={handleNextCompleteButton} disabled={isNextCompleteDisabled} className={` ${selectQuestion&&answerComplete[currentCompleteTest]? "bg-[#7ACEBC] text-white cursor-pointer" : "bg-gray-300 cursor-default text-gray-400"} text-gray-400  py-2.5 rounded-md px-5 transition-colors ease-out duration-500 `}>Next</button>
                 </div>
               </div>
               <div className="space-y-3">
                 {
                   currentQuestionComplete.complete_option.map((val, index) => (
-                    <div key={index} onClick={() => handleCompleteTestAnswer(val.answer)} className={`${isMobile? "w-auto" :  "w-72"} ${selectQuestion&&answerComplete[currentCompleteTest] === val.answer ? "bg-[#9AD1B8]" : "bg-gray-100" }  py-3.5 px-5 w-72 flex items-center space-x-5 rounded-md transition-colors ease-out duration-500`}>
+                    <div key={index} onClick={() => handleCompleteTestAnswer(val.answer)} className={`${isMobile? "w-auto" :  "w-72"} ${selectQuestion&&answerComplete[currentCompleteTest] === val.answer ? "bg-[#7ACEBC]" : "bg-gray-100" }  py-3.5 px-5 w-72 flex items-center space-x-5 rounded-md transition-colors ease-out duration-500`}>
                         <div className={`${selectQuestion&&answerComplete[currentCompleteTest] === val.answer&&"border-none"} bg-white w-5 h-5 rounded-full border border-gray-400 p-[4px]`}>        
                          {
-                            selectQuestion&&answerComplete[currentCompleteTest] === val.answer && (<div className="bg-[#9AD1B8] w-3 h-3 rounded-full transition-colors ease-out duration-500"/>)
+                            selectQuestion&&answerComplete[currentCompleteTest] === val.answer && (<div className="bg-[#7ACEBC] w-3 h-3 rounded-full transition-colors ease-out duration-500"/>)
                          }
                     </div>
                       <p>{val.answer}</p>

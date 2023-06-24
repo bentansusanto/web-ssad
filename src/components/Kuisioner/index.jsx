@@ -37,20 +37,20 @@ const Kuisioner = () => {
                 <p className="text-gray-400 text-sm">By choosing and taking relevant tests, you can gain a better understanding of your condition and take steps towards improvement and better mental well-being.</p>
               </div>
                 <div className="flex space-x-4 mt-5">
-                  <button className="border-2 border-[#9AD1B8] rounded-md text-[#81BEA2] hover:bg-[#9AD1B8] transition-colors  ease-linear duration-300 hover:text-white py-2.5 px-5">
+                  <button className="border-2 border-[#7ACEBC] rounded-md text-[#7ACEBC] hover:bg-[#7ACEBC] transition-colors  ease-linear duration-300 hover:text-white py-2.5 px-5">
                     <Link href={'/'}>Homepage</Link>
                   </button>
-                  <button onClick={redirectQuestion} disabled={!selectQuisioner} className={`${selectData ? "bg-[#9AD1B8] text-white cursor-pointer" : "bg-gray-300 cursor-default text-gray-400"}  py-2.5 rounded-md px-5 `}>Next</button>
+                  <button onClick={redirectQuestion} disabled={!selectQuisioner} className={`${selectData ? "bg-[#7ACEBC] text-white cursor-pointer" : "bg-gray-300 cursor-default text-gray-400"}  py-2.5 rounded-md px-5 `}>Next</button>
                 </div>
             </div>
             {/* Option */}
             <div className="space-y-4">
               {
                 kuisioners.map(kuis => (
-                  <div key={kuis.id} onClick={() => handleSelect(kuis.id)}  className={` ${isMobile ? "w-auto" : "w-72"} ${selectData&&selectQuisioner == kuis.id? "bg-[#9AD1B8]" : "bg-gray-100"} py-3.5 px-5 w-72 flex items-center space-x-5 rounded-md transition-colors ease-out duration-500`}>
+                  <div key={kuis.id} onClick={() => handleSelect(kuis.id)}  className={` ${isMobile ? "w-auto" : "w-72"} ${selectData&&selectQuisioner == kuis.id? "bg-[#7ACEBC]" : "bg-gray-100"} py-3.5 px-5 w-72 flex items-center space-x-5 rounded-md transition-colors ease-out duration-500`}>
                     <div  className={`${selectData&&selectQuisioner == kuis.id&&"border-none"} bg-white w-5 h-5 rounded-full border border-gray-400 p-[4px]`}>
                       {
-                        selectData&&selectQuisioner == kuis.id && (<div className="bg-[#9AD1B8] w-3 h-3 rounded-full transition-colors ease-out duration-500"/>)
+                        selectData&&selectQuisioner == kuis.id && (<div className="bg-[#7ACEBC] w-3 h-3 rounded-full transition-colors ease-out duration-500"/>)
                       }
                     </div>
                     <p>{kuis.name_test}</p>

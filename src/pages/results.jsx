@@ -1,8 +1,12 @@
+import Result from '@/components/Kuisioner/Results'
 import React from 'react'
+import TestLayout from '@/layouts/testLayout'
 
 const Results = () => {
   return (
-    <div>Results</div>
+    <TestLayout>
+      <Result/>
+    </TestLayout>
   )
 }
 
