@@ -107,7 +107,6 @@ const calculateResults = () => {
         }
       }
     }
-    console.log(`Hasilnya adalah: ${totalWeight}`)
     return Math.round(totalWeight);
 }
 
@@ -115,7 +114,6 @@ const calculateResults = () => {
   const handleNextCompleteButton = () => {
     if(lastQuestionComplete){
       const result = calculateResults()
-      console.log("Bobot", result)
       router.push(`/results?kuisName=${detailKuisioner.name_test}&&result=${result}`)
     }else{
       setCurrentCompleteTest((prevIdx) => prevIdx + 1)
@@ -145,8 +143,8 @@ const calculateResults = () => {
               <div className="space-y-5">
                 <h2 className={`text-2xl font-semibold`}>{currentQuestion.general_question}</h2>
                 <div className="flex space-x-4 mt-5">
-                <button onClick={handlePreviousQuestion} className={` ${ currentQuestionTest === 0? " hidden " : "bg-[#9AD1B8] text-white cursor-pointer"}  py-2.5 rounded-md px-5 transition-colors ease-out duration-500 `}>Back</button>
-                <button onClick={handleNextButton} disabled={isNextDisabled} className={` ${selectQuestion&&answerGeneral[currentQuestionTest]? "bg-[#9AD1B8] text-white cursor-pointer" : "bg-gray-300 cursor-default text-gray-400"} text-gray-400  py-2.5 rounded-md px-5 transition-colors ease-out duration-500 `}>Next</button>
+                <button onClick={handlePreviousQuestion} className={` ${ currentQuestionTest === 0? "hidden" : "bg-[#7ACEBC] text-white cursor-pointer"}  py-2.5 rounded-md px-5 transition-colors ease-out duration-500`}>Back</button>
+                <button onClick={handleNextButton} disabled={isNextDisabled} className={` ${selectQuestion&&answerGeneral[currentQuestionTest]? "bg-[#7ACEBC] text-white cursor-pointer" : "bg-gray-300 cursor-default text-gray-400"} text-gray-400  py-2.5 rounded-md px-5 transition-colors ease-out duration-500 `}>Next</button>
                 </div>
               </div>
               <div className="space-y-3">
@@ -158,7 +156,7 @@ const calculateResults = () => {
                             selectQuestion&&answerGeneral[currentQuestionTest] === val && (<div className="bg-[#7ACEBC] w-3 h-3 rounded-full transition-colors ease-out duration-500"/>)
                          }
                     </div>
-                      <p>{val}</p>
+                      <p className="text-white">{val}</p>
                     </div>
                   ))
                 }
@@ -182,7 +180,7 @@ const calculateResults = () => {
                             selectQuestion&&answerComplete[currentCompleteTest] === val.answer && (<div className="bg-[#7ACEBC] w-3 h-3 rounded-full transition-colors ease-out duration-500"/>)
                          }
                     </div>
-                      <p>{val.answer}</p>
+                      <p className="text-white">{val.answer}</p>
                     </div>
                   ))
                 }
