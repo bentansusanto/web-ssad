@@ -45,9 +45,9 @@ const Questions = () => {
       if (lastQuestion) {
         const isAnyNo = answerGeneral.includes('no');
         const areBothNo = answerGeneral.every(answer => answer === 'no');
-  
+        const hasil = "normal"
         if (areBothNo) {
-            router.push('/results')
+            router.push(`/results?kuisName=${detailKuisioner.name_test}&&hasil=${hasil}`)
         } else if(isAnyNo) {
           setCurrentQuestionTest(detailKuisioner.general_test.length);
         }
@@ -116,7 +116,7 @@ const calculateResults = () => {
     if(lastQuestionComplete){
       const result = calculateResults()
       console.log("Bobot", result)
-      router.push(`/results?hasil adalah=${result}`)
+      router.push(`/results?kuisName=${detailKuisioner.name_test}&&result=${result}`)
     }else{
       setCurrentCompleteTest((prevIdx) => prevIdx + 1)
       setSelectQuestion(false)
