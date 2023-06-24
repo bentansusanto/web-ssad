@@ -17,7 +17,7 @@ const Result = () => {
     if(kuisName === 'Sleeping Disorders Assesment'){
       resultData = result <= 7 ? "Tidak ada insomnia yang signifikan secara klinis" : result <= 14? "Insomnia di bawah ambang batas" : "Insomnia klinis (tingkat keparahan sedang)"
     }else if (kuisName === 'Stress Assesment') {
-      resultData = result <= 13 ? "Stress Ringan" : result <= 26? "Sedang Sedang" : "Stress Berat"
+      resultData = result <= 13 ? "Stress Ringan" : result <= 26? "Stress Sedang" : "Stress Berat"
     }else if (kuisName === 'Anxiety Assesment') {
       resultData = result <= 10 ? "Kecemasan Ringan" : result <= 15? "Kecemasan Sedang" : "Kecemasan Berat" 
     }else if (kuisName === 'Depression Assesment') {
@@ -31,7 +31,7 @@ const Result = () => {
       <div className={`${isMobile? "block space-y-12" : "flex items-start mx-44 space-x-16"}`}>
         <Image src={BgResult} alt='bg-result' className={`${isMobile ? "w-52 mx-auto" : "w-auto"} `}/>
         <div className={`${isMobile ? "mt-0 space-y-2" : "mt-10 space-y-3"}`}>
-          <h2 className='font-medium text-lg'>Berdasarkan test {kuisName} maka hasilnya sebagai berikut</h2>
+          <h2 className='font-medium text-lg'>Berdasarkan test <span className='lowercase'>{kuisName}</span> maka hasilnya sebagai berikut</h2>
           {/* Results */}
           {
             generalResult ? 
@@ -44,7 +44,7 @@ const Result = () => {
               <p className='text-lg font-bold'>{resultNow()}</p>
             </div>)
           }
-          <p>Terima kasih sudah berpartisipasi untuk mencoba mengisi test {kuisName} dari kami</p>
+          <p>Terima kasih sudah berpartisipasi untuk mencoba mengisi test <span className='lowercase'>{kuisName}</span> dari kami</p>
           <div className='pt-3'>
             <button className='bg-[#7ACEBC] text-white py-2.5 px-6 rounded-md'>
               <Link href={'/'}>Homepage</Link>
